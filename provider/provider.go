@@ -23,7 +23,7 @@ import (
 // Version is initialized by the Go linker to contain the semver of this build.
 var Version string
 
-const Name string = "xyz"
+const Name string = "sst"
 
 func Provider() p.Provider {
 	// We tell the provider what resources it needs to support.
@@ -32,17 +32,13 @@ func Provider() p.Provider {
 		Resources: []infer.InferredResource{
 			infer.Resource[Random](),
 		},
-		Components: []infer.InferredComponent{
-			infer.Component(NewRandomComponent),
-		},
-		Config: infer.Config[Config](),
+		Components: []infer.InferredComponent{},
+		Config:     infer.Config[Config](),
 		ModuleMap: map[tokens.ModuleName]tokens.ModuleName{
 			"provider": "index",
 		},
 	})
 }
 
-// Define some provider-level configuration
 type Config struct {
-	Scream *bool `pulumi:"itsasecret,optional"`
 }

@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-xyz
+module github.com/sst/pulumi-sst
 
 go 1.24
 

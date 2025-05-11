@@ -1,11 +1,10 @@
+version: 2
 archives:
   - id: archive
-    name_template: '{{ .Binary }}-{{ .Tag }}-{{ .Os }}-{{ .Arch }}'
+    name_template: "{{ .Binary }}-{{ .Tag }}-{{ .Os }}-{{ .Arch }}"
 before:
-  hooks:
-    - make gen
 builds:
-  - binary: pulumi-resource-sstfoo
+  - binary: pulumi-resource-sst
     dir: provider
     env:
       - CGO_ENABLED=0
@@ -18,12 +17,10 @@ builds:
       - linux
     ldflags:
       # The line below MUST align with the module in current provider/go.mod
-      - -X github.com/your-org-name/pulumi-sstfoo/provider/Version={{.Tag }}
-    main: ./cmd/pulumi-resource-sstfoo/
-changelog:
-  skip: true
+      - -X github.com/sst/pulumi-sst/provider/Version={{.Tag }}
+    main: ./cmd/pulumi-resource-sst/
 release:
   disable: false
   prerelease: auto
 snapshot:
-  name_template: '{{ .Tag }}-SNAPSHOT'
+  name_template: "{{ .Tag }}-SNAPSHOT"

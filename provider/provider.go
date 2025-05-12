@@ -31,6 +31,7 @@ func Provider() p.Provider {
 	return infer.Provider(infer.Options{
 		Resources: []infer.InferredResource{
 			infer.Resource[Random](),
+			infer.Resource[Dynamic](),
 		},
 		Components: []infer.InferredComponent{},
 		Config:     infer.Config[Config](),
